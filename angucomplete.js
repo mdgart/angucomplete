@@ -46,7 +46,7 @@ angular.module('angucomplete', [] )
                 $scope.pause = $scope.userPause;
             }
 
-            isNewSearchNeeded = function(newTerm, oldTerm) {
+            $scope.isNewSearchNeeded = function(newTerm, oldTerm) {
                 return newTerm.length >= $scope.minLength && newTerm != oldTerm
             }
 
@@ -163,7 +163,7 @@ angular.module('angucomplete', [] )
                     if (!$scope.searchStr || $scope.searchStr == "") {
                         $scope.showDropdown = false;
                         $scope.lastSearchTerm = null
-                    } else if (isNewSearchNeeded($scope.searchStr, $scope.lastSearchTerm)) {
+                    } else if ($scope.isNewSearchNeeded($scope.searchStr, $scope.lastSearchTerm)) {
                         $scope.lastSearchTerm = $scope.searchStr
                         $scope.showDropdown = true;
                         $scope.currentIndex = -1;
