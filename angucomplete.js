@@ -64,7 +64,12 @@ angular.module('angucomplete', [] )
                         var titleCode = [];
 
                         for (var t = 0; t < titleFields.length; t++) {
-                            titleCode.push(responseData[i][titleFields[t]]);
+                            var title_field = titleFields[t].split(".");
+                            var title_data = responseData[i];
+                            title_field.forEach(function(element, index){
+                              title_data = title_data[element];
+                            });
+                            titleCode.push(title_data);
                         }
 
                         var description = "";
